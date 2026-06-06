@@ -36,6 +36,88 @@ This project is an unofficial fan-made mod and is not affiliated with or endorse
 
 The current build targets the BepInEx 6 IL2CPP runtime used by the game. It is not a BepInEx 5 Mono plugin.
 
+## What Is BepInEx 6 IL2CPP?
+
+BepInEx is the mod loader. It starts before the game finishes loading and then loads plugin DLLs from the `BepInEx\plugins` folder.
+
+Unity games usually use one of two scripting backends:
+
+- **Mono**
+- **IL2CPP**
+
+*Sultan's Game* is an IL2CPP Unity game, so it needs the **BepInEx 6 Unity IL2CPP Windows x64** build. Using BepInEx 5, a Mono build, or the wrong CPU architecture can make the plugin fail to load.
+
+Choose a file with a name like:
+
+```text
+BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.xxx+xxxxxxx.zip
+```
+
+Do not choose files containing:
+
+```text
+Unity.Mono
+win-x86
+NET.Framework
+NET.CoreCLR
+BepInEx 5.x
+```
+
+## Installing BepInEx 6 IL2CPP
+
+BepInEx is the mod loader that allows the game to load plugin DLLs. *Sultan's Game* uses Unity IL2CPP, so this mod requires a BepInEx 6 IL2CPP x64 build. Do not use the Mono build.
+
+1. Download a BepInEx 6 Unity IL2CPP Windows x64 build from the official BepInEx bleeding edge builds page:
+
+```text
+https://builds.bepinex.dev/projects/bepinex_be
+```
+
+The correct archive name should look similar to:
+
+```text
+BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.xxx+xxxxxxx.zip
+```
+
+2. Extract the archive into the game folder, next to:
+
+```text
+Sultan's Game.exe
+```
+
+3. Start the game once.
+
+4. The first launch after installing BepInEx may take longer than usual because BepInEx generates IL2CPP interop files.
+
+5. If BepInEx was installed correctly, the game folder should contain a `BepInEx` folder and log files such as:
+
+```text
+BepInEx\LogOutput.log
+```
+
+The log should contain lines similar to:
+
+```text
+BepInEx 6.0.0-be.xxx
+Running under Unity 2022
+Loading [Sultan Character Overview ...]
+Chainloader startup complete
+```
+
+6. After BepInEx works, install this mod by placing `SultanCharacterOverview.dll` into:
+
+```text
+BepInEx\plugins\SultanCharacterOverview\
+```
+
+If the mod does not load, check these common mistakes first:
+
+- The DLL is not inside `BepInEx\plugins\SultanCharacterOverview\`.
+- You installed a Mono build instead of `Unity.IL2CPP`.
+- You installed a 32-bit `win-x86` build instead of `win-x64`.
+- You installed BepInEx 5 instead of BepInEx 6.
+- The game was not started once after installing BepInEx.
+
 ## Installation
 
 1. Install BepInEx 6 IL2CPP for *Sultan's Game*.
@@ -179,6 +261,88 @@ src\SultanCharacterOverview\SultanCharacterOverview.csproj
 - 已安装 BepInEx 6 IL2CPP
 
 当前版本面向游戏使用的 BepInEx 6 IL2CPP 环境，不是 BepInEx 5 Mono 插件。
+
+## BepInEx 6 IL2CPP 是什么？
+
+BepInEx 是 MOD 加载器。它会在游戏启动时先运行，然后从 `BepInEx\plugins` 文件夹加载 MOD DLL。
+
+Unity 游戏通常有两种脚本后端：
+
+- **Mono**
+- **IL2CPP**
+
+《苏丹的游戏》是 Unity IL2CPP 游戏，所以需要安装 **BepInEx 6 Unity IL2CPP Windows x64** 版本。如果装成 BepInEx 5、Mono 版本，或者 32 位版本，MOD 很可能不会被加载。
+
+你要下载的文件名应该类似：
+
+```text
+BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.xxx+xxxxxxx.zip
+```
+
+不要下载文件名里包含这些内容的版本：
+
+```text
+Unity.Mono
+win-x86
+NET.Framework
+NET.CoreCLR
+BepInEx 5.x
+```
+
+## 安装 BepInEx 6 IL2CPP
+
+BepInEx 是用于让游戏加载 MOD DLL 的加载器。《苏丹的游戏》使用 Unity IL2CPP，因此本 MOD 需要 BepInEx 6 IL2CPP x64 版本。不要使用 Mono 版本。
+
+1. 从 BepInEx 官方 bleeding edge builds 页面下载 BepInEx 6 Unity IL2CPP Windows x64 构建：
+
+```text
+https://builds.bepinex.dev/projects/bepinex_be
+```
+
+正确压缩包的文件名应该类似：
+
+```text
+BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.xxx+xxxxxxx.zip
+```
+
+2. 将压缩包内容解压到游戏目录，也就是这个文件所在的目录：
+
+```text
+Sultan's Game.exe
+```
+
+3. 启动游戏一次。
+
+4. 第一次安装 BepInEx 后启动游戏可能会慢一些，因为 BepInEx 需要生成 IL2CPP interop 文件。
+
+5. 如果 BepInEx 安装成功，游戏目录下应该会出现 `BepInEx` 文件夹和日志文件，例如：
+
+```text
+BepInEx\LogOutput.log
+```
+
+日志里通常能看到类似内容：
+
+```text
+BepInEx 6.0.0-be.xxx
+Running under Unity 2022
+Loading [Sultan Character Overview ...]
+Chainloader startup complete
+```
+
+6. 确认 BepInEx 可用后，再将本 MOD 的 `SultanCharacterOverview.dll` 放入：
+
+```text
+BepInEx\plugins\SultanCharacterOverview\
+```
+
+如果 MOD 没有加载，优先检查这些常见问题：
+
+- DLL 没有放在 `BepInEx\plugins\SultanCharacterOverview\` 里面。
+- 装成了 Mono 版本，而不是 `Unity.IL2CPP`。
+- 装成了 32 位 `win-x86`，而不是 `win-x64`。
+- 装成了 BepInEx 5，而不是 BepInEx 6。
+- 安装 BepInEx 后没有先启动过一次游戏。
 
 ## 安装
 
